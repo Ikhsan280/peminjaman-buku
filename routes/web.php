@@ -25,23 +25,13 @@ Auth::routes(
     ]
     );
 
-    // Hanya untuk role admin
-    Route::group(['prefix'=>'admin','middleware'=>['auth','role:admin']],function(){
-        Route::get('/',function(){
-            return 'halaman admin';
-        });
+   Route::group(['prefix'=>'admin','middleware',['auth']],function(){
+     Route::get('buku',function(){
+        return view('buku.index');
+     })->middleware(['role:admin|pengguna']);
 
-        Route::get('profile',function(){
-            return 'Halaman Profile Admin';
-        });
-    });
+     Route::get('pengarang',function(){
+        return view('pengarang.index');
+     })->middleware(['role:admin']);
 
-    //Hanya untuk role pengguna
-    Route::group(['prefix'=>'pengguna','middleware'=>['auth','role:pengguna']],function(){
-        Route::get('/',function(){
-            return 'Halaman pengguna';
-        });
-        Route::get('profile', function(){
-            return 'halaman profile pengguna';
-        });
-    });
+     });
