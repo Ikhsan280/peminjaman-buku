@@ -242,19 +242,29 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'buku',
+            'text' => 'Dashboard',
+            'url'  => 'admin/dasboard',
+            'icon'  => 'fa fa-home',
+        ],
+        [
+            'text' => 'Data Buku',
             'url'  => 'admin/buku',
-            'icon'  => 'far fa-fw fa-files',
+            'icon'  => 'fa fa-book',
         ],
         [
-            'text' => 'pengarang',
-            'url'  => 'admin/pengarang',
-            'icon'  => 'far fa-fw fa-files',
+            'text' => 'Peminjaman',
+            'url'  => 'admin/peminjam',
+            'icon'  => 'far fa-chart-bar',
         ],
         [
-            'text' => 'menu lainya',
-            'url'  => '#',
-            'icon'  => 'far fa-fw fa-files',
+            'text' => 'Anggota',
+            'url'  => 'admin/pengembalian',
+            'icon'  => 'far fa-fw fa-user',
+        ],
+        [
+            'text' => 'Pengembalian',
+            'url'  => 'admin/pengembalian',
+            'icon'  => 'far fa-chart-bar',
         ],
         ['header' => 'account_settings'],
         [
