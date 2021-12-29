@@ -27,7 +27,6 @@ class BukuController extends Controller
     public function create()
     {
         return view('admin.buku.create');
-
     }
 
     /**
@@ -39,7 +38,7 @@ class BukuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_buku' => 'required',
+            // 'id' => 'required|unique:bukus',
             'kode_buku' => 'required',
             'judul_buku' => 'required',
             'penulis_buku' => 'required',
@@ -48,16 +47,17 @@ class BukuController extends Controller
             'stok' => 'required',
         ]);
         $buku = new Buku;
-        $buku->id_buku = $request->id_buku;
+        // $buku->id = $request->id_buku;
         $buku->kode_buku = $request->kode_buku;
         $buku->judul_buku = $request->judul_buku;
         $buku->penulis_buku = $request->penulis_buku;
         $buku->penerbit_buku = $request->penerbit_buku;
-        $buku->tahun_terbit = $request->tahun_terbit;
+        $buku->tahun_penerbit = $request->tahun_penerbit;
         $buku->stok = $request->stok;
-        $book->save();
+        $buku->save();
+
         return redirect()->route('buku.index');
-        
+
 
     }
 
@@ -79,7 +79,7 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function edit(Buku $buku)
+    public function edit($id)
     {
         $buku = Buku::findOrFail($id);
         return view('admin.buku.edit', compact('buku'));
@@ -95,7 +95,7 @@ class BukuController extends Controller
     public function update(Request $request,$id)
     {
         $request->validate([
-            'id_buku' => 'required',
+            // 'id_buku' => 'required',
             'kode_buku' => 'required',
             'judul_buku' => 'required',
             'penulis_buku' => 'required',
@@ -103,15 +103,15 @@ class BukuController extends Controller
             'tahun_penerbit' => 'required',
             'stok' => 'required',
         ]);
-        $buku = new Buku;
-        $buku->id_buku = $request->id_buku;
+        $buku = Buku::findOrFail($id);
+        // $buku->id_buku = $request->id_buku;
         $buku->kode_buku = $request->kode_buku;
         $buku->judul_buku = $request->judul_buku;
         $buku->penulis_buku = $request->penulis_buku;
          $buku->penerbit_buku = $request->penerbit_buku;
-        $buku->tahun_terbit = $request->tahun_terbit;
+        $buku->tahun_penerbit = $request->tahun_penerbit;
         $buku->stok = $request->stok;
-        $author->save();
+        $buku->save();
         return redirect()->route('buku.index');
 
     }
@@ -122,8 +122,10 @@ class BukuController extends Controller
      * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Buku $buku)
+    public function destroy($id)
     {
-        //
+        $buku = Buku::findOrFail($id);
+        $buku->delete();
+        return redirect()->route('buku.index');
     }
 }

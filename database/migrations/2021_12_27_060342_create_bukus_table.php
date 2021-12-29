@@ -17,9 +17,9 @@ class CreateBukusTable extends Migration
             $table->id();
             $table->string('kode_buku');
             $table->string('judul_buku');
-            $table->integer('penulis_buku');
+            $table->string('penulis_buku');
             $table->string('penerbit_buku');
-            $table->date('tahun_penerbit');
+            $table->integer('tahun_penerbit');
             $table->integer('stok');
             $table->timestamps();
         });

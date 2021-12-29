@@ -25,8 +25,8 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        $anggota = Anggota::all();
-        return view('admin.anggota.create', compact('buku'));
+        return view('admin.anggota.create');
+
     }
 
     /**
@@ -38,7 +38,7 @@ class AnggotaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id' => 'required',
+            // 'id' => 'required',
             'kode_anggota' => 'required',
             'nama_anggota' => 'required',
             'jk_anggota' => 'required ',
@@ -47,7 +47,7 @@ class AnggotaController extends Controller
             'alamat' => 'required ',
         ]);
          $anggota = new anggota;
-        $anggota->id = $request->id;
+        // $anggota->id = $request->id;
         $anggota->kode_anggota = $request->kode_anggota;
         $anggota->nama_anggota = $request->nama_anggota;
         $anggota->jk_anggota = $request->jk_anggota;
@@ -77,9 +77,10 @@ class AnggotaController extends Controller
      * @param  \App\Models\anggota  $anggota
      * @return \Illuminate\Http\Response
      */
-    public function edit(anggota $anggota)
+    public function edit($id)
     {
-        //
+        $anggota = Anggota::findOrFail($id);
+        return view('admin.anggota.edit', compact('anggota'));
     }
 
     /**
@@ -91,7 +92,24 @@ class AnggotaController extends Controller
      */
     public function update(Request $request, anggota $anggota)
     {
-        //
+        $request->validate([
+            // 'id' => 'required',
+            'kode_anggota' => 'required',
+            'nama_anggota' => 'required',
+            'jk_anggota' => 'required ',
+            'jurusan_anggota' => 'required',
+            'no_telp_anggota' => 'required',
+            'alamat' => 'required ',
+        ]);
+        $buku = Buku::findOrFail($id);
+        $anggota->kode_anggota = $request->kode_anggota;
+        $anggota->nama_anggota = $request->nama_anggota;
+        $anggota->jk_anggota = $request->jk_anggota;
+        $anggota->jurusan_anggota = $request->jurusan_anggota;
+        $anggota->no_telp_anggota = $request->no_telp_anggota;
+        $anggota->alamat = $request->alamat;
+        $anggota->save();
+        return redirect()->route('anggota.index');
     }
 
     /**
@@ -100,8 +118,10 @@ class AnggotaController extends Controller
      * @param  \App\Models\anggota  $anggota
      * @return \Illuminate\Http\Response
      */
-    public function destroy(anggota $anggota)
+    public function destroy($id)
     {
-        //
+        $buku = Buku::findOrFail($id);
+        $buku->delete();
+        return redirect()->route('anggot.index');
     }
 }

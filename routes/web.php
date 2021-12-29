@@ -41,4 +41,4 @@ Auth::routes(
 
      });
 
-     route::resource('buku',BukuController::class);
+     route::resource('admin/buku',BukuController::class);

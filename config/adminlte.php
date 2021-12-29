@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Admin Perpus</b>',
+    'logo_img' => 'vendor/adminlte/dist/img/admin.jpg',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -248,7 +248,7 @@ return [
         ],
         [
             'text' => 'Data Buku',
-            'url'  => 'admin\buku',
+            'url'  => 'admin/buku',
             'icon'  => 'fa fa-book',
         ],
         [
@@ -263,7 +263,7 @@ return [
         ],
         [
             'text' => 'Anggota',
-            'url'  => 'admin/pengembalian',
+            'url'  => 'admin/anggota',
             'icon'  => 'far fa-fw fa-user',
         ],
 

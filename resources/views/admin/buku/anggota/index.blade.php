@@ -22,13 +22,13 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                                <th><i>Id Buku</i></th>
-                                <th><i>Kode Buku</i></th>
-                                <th><i>Judul Buku</i></th>
-                                <th><i>Penulis Buku</i></th>
-                                <th><i>Penerbit Buku</i></th>
-                                <th><i>Tahun Terbit</i></th>
-                                <th><i>Stok</i></th>
+                                <th><i>Id Anggot</i></th>
+                                <th><i>Kode Anggota</i></th>
+                                <th><i>Nama Anggota</i></th>
+                                <th><i>Jenis Kelamin</i></th>
+                                <th><i>Jurusan Anggota</i></th>
+                                <th><i>No Telepon</i></th>
+                                <th><i>Alamat</i></th>
                                 <th><i>Setting</i></th>
 
 

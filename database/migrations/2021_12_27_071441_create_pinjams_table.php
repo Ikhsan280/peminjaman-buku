@@ -17,7 +17,10 @@ class CreatePinjamsTable extends Migration
             $table->id();
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
-            $table->bigInteger('id_buku');
+            $table->bigInteger('buku_id')->unsigned();
+            $table->foreign('buku_id')
+                  ->references('id')
+                  ->on('bukus');
             $table->bigInteger('anggota_id')->unsigned();
             $table->foreign('anggota_id')
             ->references('id')
