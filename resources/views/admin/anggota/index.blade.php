@@ -16,13 +16,13 @@
                 <div class="card-header">
                     @include('layouts._flash')
                    <b>Data Buku</b>
-                    <a href="{{route('buku.create')}}" class="btn btn-sm btn-outline-primary float-right"><i>Tambah Buku</i></a>
+                    <a href="{{route('anggota.create')}}" class="btn btn-sm btn-outline-primary float-right"><i>Tambah Buku</i></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                                <th><i>Id Anggot</i></th>
+                                <th><i>Id Anggota</i></th>
                                 <th><i>Kode Anggota</i></th>
                                 <th><i>Nama Anggota</i></th>
                                 <th><i>Jenis Kelamin</i></th>
@@ -34,11 +34,11 @@
 
                             </tr>
                             @php $no=1; @endphp
-                            @foreach ($buku as $data)
+                            @foreach ($anggota as $data)
                              <tr>
                                  <td>{{$no++}}</td>
-                                 <td>{{$data->kode_buku}}</td>
-                                 <td>{{$data->judul_buku}}</td>
+                                 <td>{{$data->kode_anggota}}</td>
+                                 <td>{{$data->nama_anggot}}</td>
                                  <td>{{$data->penulis_buku}}</td>
                                  <td>{{$data->penerbit_buku}}</td>
                                  <td>{{$data->tahun_penerbit}}</td>

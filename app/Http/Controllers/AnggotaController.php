@@ -14,7 +14,7 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        $anggota = Buku::all();
+        $anggota = Anggota::all();
         return view('admin.anggota.index', compact('anggota'));
     }
 
@@ -122,6 +122,6 @@ class AnggotaController extends Controller
     {
         $buku = Buku::findOrFail($id);
         $buku->delete();
-        return redirect()->route('anggot.index');
+        return redirect()->route('anggota.index');
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\AnggotaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,5 @@ Auth::routes(
      });
 
      route::resource('admin/buku',BukuController::class);
+     route::resource('admin/anggota',AnggotaController::class);
+
