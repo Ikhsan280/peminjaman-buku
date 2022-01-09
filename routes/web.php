@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\PengembalianController;
+use App\Http\Controllers\PinjamController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +20,7 @@ use App\Http\Controllers\AnggotaController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/index', function () {
@@ -42,6 +46,24 @@ Auth::routes(
 
      });
 
+     Route::group(['prefix' => 'admin','middleware'=>['auth','role:admin']],
+        function() {
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('/', function () {
+            return view('admin.index');
+        });
+        });
+
+
+Route::group(['prefix' => 'user','middleware'=>['auth']],
+        function() {
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index2'])->name('home2');
+
+});
      route::resource('admin/buku',BukuController::class);
      route::resource('admin/anggota',AnggotaController::class);
+     route::resource('admin/pengembalian',PengembalianController::class);
+     route::resource('admin/peminjaman',PinjamController::class);
+
+
 

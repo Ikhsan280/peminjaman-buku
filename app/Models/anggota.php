@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class anggota extends Model
 {
     use HasFactory;
+
+    protected $visible=['id_anggota','kode_anggota','nama_anggota','jk_anggota','jurusan_anggota','no_telp_anggota','alamat'];
+    protected $fillable=['id_anggota','kode_anggota','nama_anggota','jk_anggota','jurusan_anggota','no_telp_anggota','alamat'];
+    public $timestamps =true;
+
+    public function anggota()
+    {
+        $this->hasMany('App\Models\anggota','id_anggota');
+     }
 }

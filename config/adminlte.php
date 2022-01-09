@@ -253,7 +253,7 @@ return [
         ],
         [
             'text' => 'Peminjaman',
-            'url'  => 'admin/peminjam',
+            'url'  => 'admin/peminjaman',
             'icon'  => 'far fa-chart-bar',
         ],
         [

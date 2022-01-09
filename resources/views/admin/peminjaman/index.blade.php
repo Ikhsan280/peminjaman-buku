@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title','Data Anggota')
+@section('title','Peminjaman')
 
 @section('content_header')
 
@@ -16,43 +16,41 @@
                 <div class="card-header">
                     @include('layouts._flash')
                    <b>Data Buku</b>
-                    <a href="{{route('anggota.create')}}" class="btn btn-sm btn-outline-primary float-right"><i>Tambah Angggota</i></a>
+                    <a href="{{route('peminjaman.create')}}" class="btn btn-sm btn-outline-primary float-right"><i>Tambah Peminjam</i></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
+                                <th><i>ID Peminjam</i></th>
+                                <th><i>Tanggal Pinjam</i></th>
+                                <th><i>Tanggal Kembali</i></th>
+                                <th><i>Id_Buku</i></th>
                                 <th><i>Id Anggota</i></th>
-                                <th><i>Kode Anggota</i></th>
-                                <th><i>Nama Anggota</i></th>
-                                <th><i>Jenis Kelamin</i></th>
-                                <th><i>Jurusan Anggota</i></th>
-                                <th><i>No Telepon</i></th>
-                                <th><i>Alamat</i></th>
-                                <th><i>Setting</i></th>
+                                <th><i>Id Petugas</i></th>
 
 
                             </tr>
                             @php $no=1; @endphp
-                            @foreach ($anggota as $data)
+                            @foreach ($pinjam as $data)
                              <tr>
                                  <td>{{$no++}}</td>
-                                 <td>{{$data->kode_anggota}}</td>
-                                 <td>{{$data->nama_anggota}}</td>
-                                 <td>{{$data->jk_anggota}}</td>
-                                 <td>{{$data->jurusan_anggota}}</td>
-                                 <td>{{$data->no_telp_anggota}}</td>
-                                 <td>{{$data->alamat}}</td>
+                                 <td>{{$data->id_peminjam}}</td>
+                                 <td>{{$data->tanggal_pinjam}}</td>
+                                 <td>{{$data->tanggal_kembali}}</td>
+                                 <td>{{$data->id_buku->judul_buku}}</td>
+                                 <td>{{$data->id_anggota->nama_anggota}}</td>
+                                 <td>{{$data->id_petugas->nama_petugas}}</td>
 
 
 
 
 
                                  <td>
-                                     <form action="{{route('anggota.destroy',$data->id)}}" method="post">
+                                     <form action="{{route('buku.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{route('anggota.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
+                                        <a href="{{route('buku.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
                                         <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapusnya')">HAPUS</button>
                                         </form>
                                  </td>

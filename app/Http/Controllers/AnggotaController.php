@@ -90,7 +90,7 @@ class AnggotaController extends Controller
      * @param  \App\Models\anggota  $anggota
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, anggota $anggota)
+    public function update(Request $request,$id)
     {
         $request->validate([
             // 'id' => 'required',
@@ -101,7 +101,7 @@ class AnggotaController extends Controller
             'no_telp_anggota' => 'required',
             'alamat' => 'required ',
         ]);
-        $buku = Buku::findOrFail($id);
+        $anggota = Anggota::findOrFail($id);
         $anggota->kode_anggota = $request->kode_anggota;
         $anggota->nama_anggota = $request->nama_anggota;
         $anggota->jk_anggota = $request->jk_anggota;
@@ -120,8 +120,8 @@ class AnggotaController extends Controller
      */
     public function destroy($id)
     {
-        $buku = Buku::findOrFail($id);
-        $buku->delete();
+        $anggota = Anggota::findOrFail($id);
+        $anggota->save();
         return redirect()->route('anggota.index');
     }
 }

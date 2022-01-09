@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\pinjam;
+use App\Models\anggpta;
+use App\Models\Buku;
+
 use Illuminate\Http\Request;
 
 class PinjamController extends Controller
@@ -14,7 +17,8 @@ class PinjamController extends Controller
      */
     public function index()
     {
-        //
+        $pinjam = Pinjam::all();
+        return view('admin.peminjaman.index', compact('pinjam'));
     }
 
     /**
@@ -24,7 +28,8 @@ class PinjamController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.peminjaman.create');
+
     }
 
     /**
@@ -35,7 +40,25 @@ class PinjamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_peminjaman' => 'required',
+            'tanggal_pinjam' => 'required',
+            'tanggal_kembali' => 'required',
+            'id_buku' => 'required',
+            'id_anggota' => 'required',
+            'id_petugas' => 'required',
+          ]);
+          $pinjam = new Pinjam;
+          $pinjam->id_peminjaman = $request->id_peminjaman;
+          $pinjam->tanggal_pinjam = $request->tanggal_pinjam;
+          $pinjam->tanggal_kembali = $request->tanggal_kembali;
+          $pinjam->id_buku = $request->id_buku;
+          $pinjam->id_anggota = $request->id_anggota;
+          $pinjam->id_petugas = $request->id_petugas;
+
+          $book->save();
+        return redirect()->route('book.index');
+
     }
 
     /**

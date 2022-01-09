@@ -19,7 +19,7 @@ class CreateAnggotasTable extends Migration
             $table->string('nama_anggota');
             $table->string('jk_anggota');
             $table->string('jurusan_anggota');
-            $table->integer('no_telp_anggota');
+            $table->string('no_telp_anggota');
             $table->string('alamat');
             $table->timestamps();
         });
