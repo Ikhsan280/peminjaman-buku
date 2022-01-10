@@ -17,7 +17,7 @@ class CreatePetugasTable extends Migration
             $table->id();
             $table->string('nama_petugas');
             $table->string('jabatan_petugas');
-            $table->integer('no_telp');
+            $table->string('no_telp');
             $table->string('alamat');
             $table->timestamps();
         });

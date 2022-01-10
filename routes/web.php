@@ -5,6 +5,8 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\PinjamController;
+use App\Http\Controllers\PetugasController;
+
 
 
 
@@ -64,6 +66,8 @@ Route::group(['prefix' => 'user','middleware'=>['auth']],
      route::resource('admin/anggota',AnggotaController::class);
      route::resource('admin/pengembalian',PengembalianController::class);
      route::resource('admin/peminjaman',PinjamController::class);
+     route::resource('admin/petugas',PetugasController::class);
+
 
 
 

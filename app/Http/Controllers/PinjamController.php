@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\pinjam;
-use App\Models\anggpta;
+use App\Models\anggota;
 use App\Models\Buku;
+
 
 use Illuminate\Http\Request;
 
@@ -17,9 +18,10 @@ class PinjamController extends Controller
      */
     public function index()
     {
-        $pinjam = Pinjam::all();
+        $pinjam = Pinjam::with('buku')->get();
         return view('admin.peminjaman.index', compact('pinjam'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,8 +30,8 @@ class PinjamController extends Controller
      */
     public function create()
     {
-        return view('admin.peminjaman.create');
-
+        $buku = Buku::all();
+        return view('admin.peminjaman.create', compact('buku'));
     }
 
     /**
@@ -41,23 +43,25 @@ class PinjamController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_peminjaman' => 'required',
+            // 'id_peminjaman' => 'required',
             'tanggal_pinjam' => 'required',
             'tanggal_kembali' => 'required',
-            'id_buku' => 'required',
-            'id_anggota' => 'required',
-            'id_petugas' => 'required',
+            'buku_id' => 'required',
+            'anggota_id' => 'required',
+            'petugas_id' => 'required',
           ]);
           $pinjam = new Pinjam;
-          $pinjam->id_peminjaman = $request->id_peminjaman;
+        //   $pinjam->id_peminjaman = $request->id_peminjaman;
           $pinjam->tanggal_pinjam = $request->tanggal_pinjam;
           $pinjam->tanggal_kembali = $request->tanggal_kembali;
-          $pinjam->id_buku = $request->id_buku;
-          $pinjam->id_anggota = $request->id_anggota;
-          $pinjam->id_petugas = $request->id_petugas;
-
+          $pinjam->buku_id = $request->buku_id;
+          $pinjam->anggota_id = $request->anggota_id;
+          $pinjam->petugas_id = $request->petugas_id;
           $book->save();
-        return redirect()->route('book.index');
+          $buku = Buku::findOrFail($request->buku_id = $request->buku_id);
+          $buku->stok -= $request->jumlah;
+          $buku->save();
+        return redirect()->route('admin.peminjaman.index');
 
     }
 
@@ -67,9 +71,10 @@ class PinjamController extends Controller
      * @param  \App\Models\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function show(pinjam $pinjam)
+    public function show($id)
     {
-        //
+        $pinjam = Book::findOrFail($id);
+        return view('admin.peminjaman.show', compact('pinjam'));
     }
 
     /**

@@ -14,7 +14,8 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        //
+        $petugas = Petugas::all();
+        return view('admin.petugas.index', compact('petugas'));
     }
 
     /**
@@ -24,7 +25,8 @@ class PetugasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.petugas.create');
+
     }
 
     /**
@@ -35,8 +37,24 @@ class PetugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            // 'id' => 'required',
+            'nama_petugas' => 'required',
+            'jabatan_petugas' => 'required',
+            'no_telp' => 'required ',
+            'alamat' => 'required',
+        ]);
+        $petugas = new Petugas;
+        // $petugas->id = $request->id_petugas;
+        $petugas->nama_petugas = $request->nama_petugas;
+        $petugas->jabatan_petugas = $request->jabatan_petugas;
+        $petugas->no_telp = $request->no_telp;
+        $petugas->alamat = $request->alamat;
+        $petugas->save();
+
+        return redirect()->route('petugas.index');
+
+        }
 
     /**
      * Display the specified resource.

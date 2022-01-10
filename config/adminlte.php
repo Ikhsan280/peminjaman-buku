@@ -266,6 +266,11 @@ return [
             'url'  => 'admin/anggota',
             'icon'  => 'far fa-fw fa-user',
         ],
+        [
+            'text' => 'Petugas',
+            'url'  => 'admin/petugas',
+            'icon'  => 'far fa-fw fa-user',
+        ],
 
     ],
 
