@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\petugas;
+use App\Models\pinjam;
 use Illuminate\Http\Request;
 
 class PetugasController extends Controller

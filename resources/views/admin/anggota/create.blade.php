@@ -23,9 +23,17 @@
                             <label for="">Nama Anggota</label>
                             <input type="text" name="nama_anggota" class="form-control @error('nama_anggota') is-invalid @enderror">
                             <label for="">Jenis Kelamin</label>
-                            <input type="text" name="jk_anggota" class="form-control @error('jk_anggota') is-invalid @enderror">
+                            <select name="jk_anggota" class="form-control @error('jk_anggota') is-invalid @enderror">
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="perempuan">Perempuan</option>
+                            </select>
                             <label for="">Jurusan</label>
-                            <input type="text" name="jurusan_anggota" class="form-control @error('jurusan_anggota') is-invalid @enderror">
+                            <select name="jurusan_anggota" class="form-control @error('jurusan_anggota') is-invalid @enderror">
+                                <option value="RPL">RPL</option>
+                                <option value="TBSM">TBSM</option>
+                                <option value="TKR">TKR</option>
+
+                            </select>
                             <label for="">no_telp</label>
                             <input type="number" name="no_telp_anggota" class="form-control @error('no_telp_anggota') is-invalid @enderror">
                             <label for="">Alamat</label>

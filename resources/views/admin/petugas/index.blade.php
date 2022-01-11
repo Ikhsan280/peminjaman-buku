@@ -35,7 +35,7 @@
                                  <td>{{$no++}}</td>
                                  <td>{{$data->nama_petugas}}</td>
                                  <td>{{$data->jabatan_petugas}}</td>
-                                 <td>{{$data->no_telp_petugas}}</td>
+                                 <td>{{$data->no_telp}}</td>
                                  <td>{{$data->alamat}}</td>
 
 

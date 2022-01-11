@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\pinjam;
 use App\Models\anggota;
 use App\Models\Buku;
+use App\Models\Petuas;
+
 
 
 use Illuminate\Http\Request;
@@ -18,8 +20,8 @@ class PinjamController extends Controller
      */
     public function index()
     {
-        $pinjam = Pinjam::with('buku')->get();
-        return view('admin.peminjaman.index', compact('pinjam'));
+        $pinjam = Pinjam::all();
+        return view('admin.peminjaman.index',compact('pinjam'));
     }
 
 
@@ -31,8 +33,12 @@ class PinjamController extends Controller
     public function create()
     {
         $buku = Buku::all();
-        return view('admin.peminjaman.create', compact('buku'));
+        $anggota = Anggota::all();
+        $petugas  = Petugas::all();
+
+        return view('admin.peminjaman.create', compact('buku','anggota','petugas'));
     }
+
 
     /**
      * Store a newly created resource in storage.

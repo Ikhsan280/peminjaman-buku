@@ -13,17 +13,23 @@ class pinjam extends Model
     protected $fillable=['id_peminjam','tanggal_pinjam','tanggal_kembali','buku_id','anggota_id','petugas_id'];
     public $timestamps =true;
 
-    public function buku()
+    public function bukus()
     {
         // data dari model "book" bisa dimiliki oleh model "author"
         // melalui fk "authoe_id"
         return $this->belongsTo('App\Models\Buku','buku_id');
     }
 
-    public function anggota()
+    public function anggotas()
     {
         // data dari model "book" bisa dimiliki oleh model "author"
         // melalui fk "authoe_id"
         return $this->belongsTo('App\Models\Anggota','anggota_id');
+    }
+    public function petugas()
+    {
+        // data dari model "book" bisa dimiliki oleh model "author"
+        // melalui fk "authoe_id"
+        return $this->belongsTo('App\Models\petugas','petugas_id');
     }
 }

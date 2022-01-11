@@ -30,10 +30,17 @@
                                 @endforeach
                             </select>
                             <label for="">Anggota</label>
-                            <input type="text" name="anggota_id" class="form-control @error('anggota_id') is-invalid @enderror">
+                            <select name="anggota_id" class="form-control @error('anggota_id') is-invalid @enderror" >
+                                @foreach($anggota as $data)
+                                    <option value="{{$data->id}}">{{$data->nama_anggota}}</option>
+                                @endforeach
+                            </select>
                             <label for="">Petugas</label>
-                            <input type="text" name="Petugas" class="form-control @error('anggota_id') is-invalid @enderror">
-
+                                <select name="petugas_id" class="form-control @error('petugas_id') is-invalid @enderror" >
+                                @foreach($petugas as $data)
+                                    <option value="{{$data->id}}">{{$data->nama_petugas}}</option>
+                                @endforeach
+                            </select>
 
                             @error('nama_petugas')
 
