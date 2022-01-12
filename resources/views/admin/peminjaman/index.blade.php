@@ -28,6 +28,7 @@
                                 <th><i>Id_Buku</i></th>
                                 <th><i>Id Anggota</i></th>
                                 <th><i>Id Petugas</i></th>
+                                <th><i>Action</i></th>
 
 
                             </tr>
@@ -35,12 +36,11 @@
                             @foreach ($pinjam as $data)
                              <tr>
                                  <td>{{$no++}}</td>
-                                 <td>{{$data->id_peminjam}}</td>
                                  <td>{{$data->tanggal_pinjam}}</td>
                                  <td>{{$data->tanggal_kembali}}</td>
-                                 <td>{{$data->id_buku->judul_buku}}</td>
-                                 <td>{{$data->id_anggota->nama_anggota}}</td>
-                                 <td>{{$data->id_petugas->nama_petugas}}</td>
+                                 <td>{{$data->buku_id}}</td>
+                                 <td>{{$data->anggota_id}}</td>
+                                 <td>{{$data->petugas_id}}</td>
 
 
 
@@ -50,8 +50,7 @@
                                      <form action="{{route('buku.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{route('buku.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin menghapusnya')">HAPUS</button>
+                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Apakah anda yakin mengembalikan')">KEMBALIKAN</button>
                                         </form>
                                  </td>
                              </tr>

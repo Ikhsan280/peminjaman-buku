@@ -26,7 +26,7 @@
                             <label for="">Nama Buku</label>
                             <select name="buku_id" class="form-control @error('buku_id') is-invalid @enderror" >
                                 @foreach($buku as $data)
-                                    <option value="{{$data->judul_buku}}">{{$data->judul_buku}}</option>
+                                    <option value="{{$data->id}}">{{$data->judul_buku}}</option>
                                 @endforeach
                             </select>
                             <label for="">Anggota</label>

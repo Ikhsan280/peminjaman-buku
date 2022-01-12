@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\pinjam;
 use App\Models\anggota;
 use App\Models\Buku;
-use App\Models\Petuas;
+use App\Models\Petugas;
 
 
 
@@ -63,11 +63,11 @@ class PinjamController extends Controller
           $pinjam->buku_id = $request->buku_id;
           $pinjam->anggota_id = $request->anggota_id;
           $pinjam->petugas_id = $request->petugas_id;
-          $book->save();
+          $pinjam->save();
           $buku = Buku::findOrFail($request->buku_id = $request->buku_id);
           $buku->stok -= $request->jumlah;
           $buku->save();
-        return redirect()->route('admin.peminjaman.index');
+        return redirect()->route('peminjaman.index');
 
     }
 
