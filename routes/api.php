@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\API\Bukucontroller;
+use App\Http\Controllers\API\BukuController;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // route api
 Route::resource('buku',BukuController::class);
+Route::resource('user',UserController::class);
+
+

@@ -53,6 +53,7 @@ class PinjamController extends Controller
             'tanggal_pinjam' => 'required',
             'tanggal_kembali' => 'required',
             'buku_id' => 'required',
+            'jumlah' => 'required',
             'anggota_id' => 'required',
             'petugas_id' => 'required',
           ]);
@@ -61,11 +62,12 @@ class PinjamController extends Controller
           $pinjam->tanggal_pinjam = $request->tanggal_pinjam;
           $pinjam->tanggal_kembali = $request->tanggal_kembali;
           $pinjam->buku_id = $request->buku_id;
+          $pinjam->jumlah = $request->jumlah;
           $pinjam->anggota_id = $request->anggota_id;
           $pinjam->petugas_id = $request->petugas_id;
           $pinjam->save();
           $buku = Buku::findOrFail($request->buku_id = $request->buku_id);
-          $buku->stok -= $request->jumlah;
+          $buku->stok -= $request-> jumlah;
           $buku->save();
         return redirect()->route('peminjaman.index');
 
@@ -112,8 +114,10 @@ class PinjamController extends Controller
      * @param  \App\Models\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pinjam $pinjam)
+    public function destroy($id)
     {
-        //
+        $pinjam = Pinjam::findOrFail($id);
+        $pinjam->delete();
+        return redirect()->route('peminjaman.index');
     }
 }

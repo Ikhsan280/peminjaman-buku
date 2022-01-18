@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Perpustakaan',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -246,21 +246,29 @@ return [
             'url'  => 'admin/dasboard',
             'icon'  => 'fa fa-home',
         ],
+
         [
             'text' => 'Data Buku',
             'url'  => 'admin/buku',
             'icon'  => 'fa fa-book',
         ],
         [
+            'text' => 'Kelola Data',
+            'icon' => 'fas fa-clipboard',
+            'submenu' => [
+
+        [
             'text' => 'Peminjaman',
-            'url'  => 'admin/peminjaman',
             'icon'  => 'far fa-chart-bar',
+            'url'  => 'admin/peminjaman',
         ],
         [
             'text' => 'Pengembalian',
-            'url'  => 'admin/pengembalian',
             'icon'  => 'far fa-chart-bar',
+            'url'  => 'admin/pengembalian',
+            ],
         ],
+    ],
         [
             'text' => 'Anggota',
             'url'  => 'admin/anggota',

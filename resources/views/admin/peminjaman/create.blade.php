@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Daftar Petugas Baru</div>
+                <div class="card-header">Data Peminjaman</div>
                 <div class="card-body">
                     <form action="{{route('peminjaman.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -29,6 +29,8 @@
                                     <option value="{{$data->id}}">{{$data->judul_buku}}</option>
                                 @endforeach
                             </select>
+                            <label for="">Jumlah</label>
+                            <input type="number" name="jumlah" class="form-control @error('jumlah') is-invalid @enderror">
                             <label for="">Anggota</label>
                             <select name="anggota_id" class="form-control @error('anggota_id') is-invalid @enderror" >
                                 @foreach($anggota as $data)

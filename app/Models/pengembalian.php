@@ -9,12 +9,33 @@ class pengembalian extends Model
 {
     use HasFactory;
 
-    protected $visible=['id','  ','judul_buku','penulis_buku','penerbit_buku','stok'];
-    protected $fillable=['id','  ','judul_buku','penulis_buku','penerbit_buku','stok'];
+    protected $visible=['id','tanggal_pinjam','denda','jumlah','buku_id','petugas_id','anggota_id'];
+    protected $fillable=['id','tanggal_pinjam','denda','jumlah','buku_id','petugas_id','anggota_id'];
     public $timestamps =true;
 
-    public function book()
+    public function bukus()
     {
-        $this->hasMany('App\Models\BookPengembalian','id_buku');
-     }
+        // data dari model "book" bisa dimiliki oleh model "author"
+        // melalui fk "authoe_id"
+        return $this->belongsTo('App\Models\Buku','buku_id');
+    }
+
+    public function anggotas()
+    {
+        // data dari model "book" bisa dimiliki oleh model "author"
+        // melalui fk "authoe_id"
+        return $this->belongsTo('App\Models\Anggota','anggota_id');
+    }
+    public function petugas()
+    {
+        // data dari model "book" bisa dimiliki oleh model "author"
+        // melalui fk "authoe_id"
+        return $this->belongsTo('App\Models\petugas','petugas_id');
+    }
+    public function pinjams()
+    {
+        // data dari model "book" bisa dimiliki oleh model "author"
+        // melalui fk "authoe_id"
+        return $this->belongsTo('App\Models\petugas','id_pinjam');
+    }
 }

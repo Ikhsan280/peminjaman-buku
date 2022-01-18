@@ -21,6 +21,7 @@ class CreatePinjamsTable extends Migration
             $table->foreign('buku_id')
                   ->references('id')
                   ->on('bukus');
+            $table->integer('jumlah');
             $table->bigInteger('anggota_id')->unsigned();
             $table->foreign('anggota_id')
             ->references('id')

@@ -17,6 +17,7 @@ class CreatePengembaliansTable extends Migration
             $table->id();
             $table->string('tanggal_pengembalian');
             $table->string('denda');
+            $table->integer('jumlah');
             $table->bigInteger('buku_id')->unsigned();
             $table->foreign('buku_id')
                   ->references('id')

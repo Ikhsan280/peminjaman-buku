@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-header">
                     @include('layouts._flash')
-                   <b>Data Buku</b>
+                   <b>Data Petugas</b>
                     <a href="{{route('petugas.create')}}" class="btn btn-sm btn-outline-primary float-right"><i>Tambah Petugas</i></a>
                 </div>
                 <div class="card-body">
@@ -42,7 +42,7 @@
 
 
                                  <td>
-                                     <form action="{{route('buku.destroy',$data->id)}}" method="post">
+                                     <form action="{{route('petugas.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
                                         <a href="{{route('buku.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>

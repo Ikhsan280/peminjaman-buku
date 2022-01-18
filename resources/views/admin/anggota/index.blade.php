@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-header">
                     @include('layouts._flash')
-                   <b>Data Buku</b>
+                   <b>Data Anggota</b>
                     <a href="{{route('anggota.create')}}" class="btn btn-sm btn-outline-primary float-right"><i>Tambah Angggota</i></a>
                 </div>
                 <div class="card-body">
