@@ -23,11 +23,12 @@
                         <table class="table">
                             <tr>
                                 <th><i>ID Peminjam</i></th>
+                                <th><i>Buku</i></th>
+                                <th><i>Anggota</i></th>
                                 <th><i>Tanggal Pinjam</i></th>
                                 <th><i>Tanggal Kembali</i></th>
-                                <th><i>Id_Buku</i></th>
-                                <th><i>Id Anggota</i></th>
-                                <th><i>Id Petugas</i></th>
+                                <th><i>Durasi Pinjam</i></th>
+                                <th><i>Denda</i></th>
                                 <th><i>Action</i></th>
 
 
@@ -36,11 +37,31 @@
                             @foreach ($pinjam as $data)
                              <tr>
                                  <td>{{$no++}}</td>
+                                 <td>{{$data->bukus->judul_buku}}</td>
+                                 <td>{{$data->anggotas->nama_anggota}}</td>
                                  <td>{{$data->tanggal_pinjam}}</td>
                                  <td>{{$data->tanggal_kembali}}</td>
-                                 <td>{{$data->buku_id}}</td>
-                                 <td>{{$data->anggota_id}}</td>
-                                 <td>{{$data->petugas_id}}</td>
+
+                                 <th>
+                                        <?php
+                                            $datetime2 = strtotime($data->tanggal_kembali) ;
+                                            $datenow = strtotime(date("Y-m-d"));
+                                            $durasi = ($datetime2 - $datenow) / 86400 ;
+                                        ?>
+                                        @if ($durasi < 0 )
+                                            Durasi Habis / {{ $durasi }} Hari
+                                        @else
+                                            {{ $durasi }} Hari
+                                        @endif
+                                    </th>
+                                    <th>
+                                        @if ($durasi < 0)
+                                            <?php $denda = abs($durasi) * 1000 ; ?>
+                                            {{ $denda }}
+                                        @else
+                                            0
+                                        @endif
+                                    </th>
 
 
 

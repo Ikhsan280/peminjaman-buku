@@ -243,7 +243,7 @@ return [
         ],
         [
             'text' => 'Dashboard',
-            'url'  => 'admin/dasboard',
+            'url'  => 'admin/dashboard',
             'icon'  => 'fa fa-home',
         ],
 

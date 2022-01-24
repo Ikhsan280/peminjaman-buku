@@ -26,10 +26,7 @@ class CreatePinjamsTable extends Migration
             $table->foreign('anggota_id')
             ->references('id')
             ->on('anggotas');
-            $table->bigInteger('petugas_id')->unsigned();
-            $table->foreign('petugas_id')
-                  ->references('id')
-                  ->on('petugas');
+
             $table->timestamps();
         });
     }

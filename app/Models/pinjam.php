@@ -31,5 +31,7 @@ class pinjam extends Model
         // data dari model "book" bisa dimiliki oleh model "author"
         // melalui fk "authoe_id"
         return $this->belongsTo('App\Models\petugas','petugas_id');
+
     }
+
 }

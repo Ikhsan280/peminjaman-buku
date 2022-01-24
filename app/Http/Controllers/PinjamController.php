@@ -55,8 +55,12 @@ class PinjamController extends Controller
             'buku_id' => 'required',
             'jumlah' => 'required',
             'anggota_id' => 'required',
-            'petugas_id' => 'required',
           ]);
+          $stok = Buku::find($request->jumlah);
+          if ($stok->stok <= 0 ) {
+              flash('Maaf Stock Buku Habis', 'danger');
+              return redirect()->back();
+          }
           $pinjam = new Pinjam;
         //   $pinjam->id_peminjaman = $request->id_peminjaman;
           $pinjam->tanggal_pinjam = $request->tanggal_pinjam;
@@ -64,7 +68,6 @@ class PinjamController extends Controller
           $pinjam->buku_id = $request->buku_id;
           $pinjam->jumlah = $request->jumlah;
           $pinjam->anggota_id = $request->anggota_id;
-          $pinjam->petugas_id = $request->petugas_id;
           $pinjam->save();
           $buku = Buku::findOrFail($request->buku_id = $request->buku_id);
           $buku->stok -= $request-> jumlah;
@@ -116,8 +119,11 @@ class PinjamController extends Controller
      */
     public function destroy($id)
     {
-        $pinjam = Pinjam::findOrFail($id);
+        $pinjam = pinjam::find($id);
+        $buku = Buku::where("id","=", $pinjam->buku_id)->first();
+        $buku->stok += $pinjam->jumlah ;
         $pinjam->delete();
+        $buku->save() ;
         return redirect()->route('peminjaman.index');
     }
 }

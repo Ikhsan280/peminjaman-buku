@@ -37,12 +37,7 @@
                                     <option value="{{$data->id}}">{{$data->nama_anggota}}</option>
                                 @endforeach
                             </select>
-                            <label for="">Petugas</label>
-                                <select name="petugas_id" class="form-control @error('petugas_id') is-invalid @enderror" >
-                                @foreach($petugas as $data)
-                                    <option value="{{$data->id}}">{{$data->nama_petugas}}</option>
-                                @endforeach
-                            </select>
+
 
                             @error('nama_petugas')
 

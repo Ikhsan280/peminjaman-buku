@@ -67,7 +67,9 @@ Route::group(['prefix' => 'user','middleware'=>['auth']],
      route::resource('admin/pengembalian',PengembalianController::class);
      route::resource('admin/peminjaman',PinjamController::class);
      route::resource('admin/petugas',PetugasController::class);
-
+     Route::get('/dasboard', function () {
+        return view('admin.dashboard                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ');
+    });
 
 
 
